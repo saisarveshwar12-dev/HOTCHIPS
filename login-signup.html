@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login / Signup | SRI BALAJI HOT CHIPS</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    .auth-container { max-width: 450px; margin: 40px auto; padding: 30px; }
+    .auth-section { display: none; }
+    .auth-section.active { display: block; }
+    .auth-header { text-align: center; margin-bottom: 25px; }
+    .auth-toggle { text-align: center; margin-top: 20px; font-size: 0.9rem; }
+    .auth-toggle button { background: none; border: none; color: var(--accent-orange); cursor: pointer; text-decoration: underline; font-weight: bold; }
+  </style>
+</head>
+
+<body class="page-auth">
+  <canvas id="bg-particles"></canvas>
+  <header class="site-header glass">
+    <div class="container header-inner">
+      <a href="index.html" class="brand">
+        <img src="images/logo.png" alt="Sri Balaji Hot Chips Logo" class="brand-logo" />
+        <div class="brand-text">
+          <span class="brand-title">SRI BALAJI HOT CHIPS</span>
+          <span class="brand-tagline">FRESH QUALITY AND TASTY</span>
+        </div>
+      </a>
+      <nav class="main-nav">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="products.html" class="nav-link">Products</a>
+        <a href="cart.html" class="nav-link">Cart</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="container">
+      <div id="login-section" class="auth-container glass auth-section active">
+        <div class="auth-header">
+          <h2>Customer Login</h2>
+          <p>Access your account & order history</p>
+        </div>
+        <form id="user-login-form">
+          <div class="field">
+            <label>Email Address</label>
+            <input type="email" name="email" placeholder="name@example.com" required />
+          </div>
+          <div class="field">
+            <label>Password</label>
+            <input type="password" name="password" placeholder="••••••••" required />
+          </div>
+          <button type="submit" class="btn btn-primary glow full-width">Customer Login</button>
+        </form>
+        <div class="auth-toggle">
+          Don't have an account? <button id="show-signup">Sign Up</button>
+        </div>
+      </div>
+
+      <div id="signup-section" class="auth-container glass auth-section">
+        <div class="auth-header">
+          <h2>Create Account</h2>
+          <p>Join the Hot Chips family!</p>
+        </div>
+        <form id="user-signup-form">
+          <div class="field">
+            <label>Email Address</label>
+            <input type="email" name="email" placeholder="name@example.com" required />
+          </div>
+          <div class="field">
+            <label>Password</label>
+            <input type="password" name="password" placeholder="••••••••" required />
+          </div>
+          <button type="submit" class="btn btn-primary glow full-width">Sign Up</button>
+        </form>
+        <div class="auth-toggle">
+          Already have an account? <button id="show-login">Customer Login</button>
+        </div>
+      </div>
+
+      <div id="otp-section" class="auth-container glass auth-section">
+        <div class="auth-header">
+          <h2>OTP Verification</h2>
+          <p>Enter the 6-digit code sent to your email.</p>
+        </div>
+        <form id="user-otp-form">
+          <div class="field">
+            <label>Enter OTP</label>
+            <input type="text" name="otp" maxlength="6" placeholder="123456" style="text-align: center; letter-spacing: 5px; font-size: 1.5rem;" required />
+          </div>
+          <button type="submit" class="btn btn-primary glow full-width">Verify & Register</button>
+        </form>
+        <div class="auth-toggle">
+          Didn't get code? <button type="button" onclick="alert('OTP sent again: 123456')">Resend OTP</button>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script src="js/script.js"></script>
+</body>
+
+</html>

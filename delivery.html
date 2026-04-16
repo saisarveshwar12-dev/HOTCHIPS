@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Delivery Dashboard | SRI BALAJI HOT CHIPS</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body class="page-delivery">
+  <canvas id="bg-particles"></canvas>
+  <header class="site-header glass">
+    <div class="container header-inner">
+      <a href="index.html" class="brand">
+        <img src="images/logo.png" alt="Sri Balaji Hot Chips Logo" class="brand-logo" />
+        <div class="brand-text">
+          <span class="brand-title">SRI BALAJI HOT CHIPS</span>
+          <span class="brand-tagline">FRESH QUALITY AND TASTY</span>
+        </div>
+      </a>
+      <nav class="main-nav">
+        <button id="delivery-logout" class="btn btn-ghost btn-mini">Logout</button>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="page-heading">
+      <div class="container">
+        <h1>Delivery Dashboard</h1>
+        <p>Active customer orders for fulfillment.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container" id="delivery-orders-list">
+        <div class="text-center p-5">
+           <div class="spinner"></div>
+           <p>Loading active orders...</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-bottom">
+      <span>© <span id="year"></span> Sri Balaji Hot Chips. All rights reserved.</span>
+    </div>
+  </footer>
+
+  <script src="js/script.js"></script>
+</body>
+</html>

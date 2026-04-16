@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Order History | SRI BALAJI HOT CHIPS</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    .order-history-container { max-width: 800px; margin: 40px auto; }
+    .order-history-card { padding: 20px; border-radius: 15px; border: 1px solid rgba(255,255,255,0.1); transition: transform 0.3s; }
+    .order-history-card:hover { transform: translateY(-3px); }
+    .order-header { display: flex; justify-content: space-between; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 10px; margin-bottom: 15px; }
+    .order-date { font-weight: bold; opacity: 0.8; }
+    .order-status { padding: 4px 10px; border-radius: 20px; font-size: 0.8rem; font-weight: bold; }
+    .status-completed { background: rgba(52, 211, 153, 0.2); color: #34d399; }
+    .order-items { margin-bottom: 15px; font-size: 0.95rem; line-height: 1.6; }
+    .order-footer { display: flex; justify-content: space-between; align-items: center; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 10px; }
+    .order-total { font-size: 1.25rem; font-weight: bold; color: var(--accent-yellow); }
+    .order-method { opacity: 0.6; font-size: 0.85rem; }
+  </style>
+</head>
+
+<body class="page-history">
+  <canvas id="bg-particles"></canvas>
+  <header class="site-header glass">
+    <div class="container header-inner">
+      <a href="index.html" class="brand">
+        <img src="images/logo.png" alt="Sri Balaji Hot Chips Logo" class="brand-logo" />
+        <div class="brand-text">
+          <span class="brand-title">SRI BALAJI HOT CHIPS</span>
+          <span class="brand-tagline">FRESH QUALITY AND TASTY</span>
+        </div>
+      </a>
+      <nav class="main-nav">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="products.html" class="nav-link">Products</a>
+        <a href="cart.html" class="nav-link">Cart</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="page-heading">
+      <div class="container">
+        <h1 data-animate="fade-up">Order History</h1>
+        <p data-animate="fade-up" data-animate-delay="100">
+          Track and re-order your favorite crispy snacks.
+        </p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container order-history-container" id="order-history-list">
+        <!-- Order cards injected via JavaScript -->
+        <div class="text-center p-5">
+           <div class="spinner"></div>
+           <p>Loading your history...</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="js/script.js"></script>
+</body>
+
+</html>

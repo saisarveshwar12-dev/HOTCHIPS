@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>KDS | Kitchen Display System</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    .kds-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1.5rem;
+      padding: 2rem;
+    }
+    .kds-card {
+      background: #1a1035;
+      border: 2px solid var(--primary);
+      border-radius: 12px;
+      padding: 1.5rem;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    }
+    .kds-header {
+      border-bottom: 1px solid var(--border-soft);
+      padding-bottom: 0.5rem;
+      margin-bottom: 1rem;
+      display: flex;
+      justify-content: space-between;
+    }
+    .kds-item {
+      font-size: 1.2rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      color: var(--accent-gold);
+    }
+    .kds-notes {
+      font-size: 0.9rem;
+      color: var(--accent-red);
+      background: rgba(239, 68, 68, 0.1);
+      padding: 0.5rem;
+      border-radius: 6px;
+      margin-top: 0.5rem;
+    }
+    .time-elapsed {
+      font-size: 0.8rem;
+      color: var(--text-soft);
+    }
+  </style>
+</head>
+<body class="page-kds">
+  <header class="site-header glass">
+    <div class="container header-inner">
+      <div class="brand">
+        <span class="brand-title">KITCHEN SYSTEM (KDS)</span>
+      </div>
+      <button onclick="location.reload()" class="btn btn-mini btn-ghost">Refresh Orders</button>
+    </div>
+  </header>
+
+  <main class="kds-grid" id="kds-orders">
+    <!-- Orders injected here -->
+  </main>
+
+  <script>
+    const STORAGE_KEYS = { ORDER_HISTORY: 'sb_hotchips_order_history' };
+    
+    function renderKDS() {
+      const history = JSON.parse(localStorage.getItem(STORAGE_KEYS.ORDER_HISTORY) || '[]');
+      const pending = history.filter(o => o.status === 'Pending' || o.status === 'Confirmed');
+      const container = document.getElementById('kds-orders');
+      
+      if (!pending.length) {
+        container.innerHTML = '<h2>No pending items in kitchen.</h2>';
+        return;
+      }
+
+      container.innerHTML = pending.map(order => `
+        <div class="kds-card">
+          <div class="kds-header">
+            <strong>${order.id}</strong>
+            <span class="time-elapsed">${new Date(order.timestamp).toLocaleTimeString()}</span>
+          </div>
+          <div class="kds-body">
+            ${order.cart.map(item => `
+              <div class="kds-item">${item.quantity}x ${item.id}</div>
+            `).join('')}
+            ${order.orderNotes ? `<div class="kds-notes">NOTE: ${order.orderNotes}</div>` : ''}
+            ${order.giftWrap ? `<div class="kds-notes" style="color:var(--accent-gold); background:rgba(255,215,0,0.1);">🎁 GIFT WRAP REQUIRED</div>` : ''}
+          </div>
+          <div style="margin-top:1.5rem;">
+            <button class="btn btn-primary full-width" onclick="markReady('${order.id}')">READY FOR DELIVERY</button>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    window.markReady = function(oid) {
+      let history = JSON.parse(localStorage.getItem(STORAGE_KEYS.ORDER_HISTORY) || '[]');
+      const idx = history.findIndex(o => o.id === oid);
+      if (idx !== -1) {
+        history[idx].status = 'Out for Delivery';
+        localStorage.setItem(STORAGE_KEYS.ORDER_HISTORY, JSON.stringify(history));
+        renderKDS();
+      }
+    };
+
+    setInterval(renderKDS, 5000);
+    renderKDS();
+  </script>
+</body>
+</html>

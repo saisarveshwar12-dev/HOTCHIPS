@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Track Order | SRI BALAJI HOT CHIPS</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body class="page-track">
+  <canvas id="bg-particles"></canvas>
+  <header class="site-header glass">
+    <div class="container header-inner">
+      <a href="index.html" class="brand">
+        <img src="images/logo.png" alt="Sri Balaji Hot Chips Logo" class="brand-logo" />
+        <div class="brand-text">
+          <span class="brand-title">SRI BALAJI HOT CHIPS</span>
+          <span class="brand-tagline">FRESH QUALITY AND TASTY</span>
+        </div>
+      </a>
+      <nav class="main-nav">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="products.html" class="nav-link">Products</a>
+        <a href="order-history.html" class="nav-link">History</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="page-heading">
+      <div class="container">
+        <h1>Track Your Order</h1>
+        <p>Enter your Order ID to see real-time delivery status.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container track-container">
+        <div class="track-search glass">
+          <div class="field">
+            <label for="track-id">Order ID</label>
+            <input type="text" id="track-id" placeholder="e.g. ORD-1234" />
+          </div>
+          <button id="btn-track" class="btn btn-primary glow full-width">Track Order</button>
+        </div>
+
+        <div id="track-result" class="track-result" style="display:none;">
+          <!-- Tracking content injected by JS -->
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-bottom">
+      <span>© <span id="year"></span> Sri Balaji Hot Chips. All rights reserved.</span>
+    </div>
+  </footer>
+
+  <script src="js/script.js"></script>
+</body>
+</html>
